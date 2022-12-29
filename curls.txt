@@ -1,0 +1,169 @@
+1. Create User
+curl --location --request POST 'http://localhost:8000/api/user/create' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"Soumyak_user",
+    "email":"soumyakuser@gmail.com",
+    "password":"soumyakuser2001"
+}'
+
+2. Verify email
+curl --location --request POST 'http://localhost:8000/api/user/verify-email' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId":"639ed776d404bfb645413828",
+    "OTP":"673102"
+}'
+
+3. Resend Email Verification
+curl --location --request POST 'http://localhost:8000/api/user/resend-email-verification-token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userId":"639ed9aafa3de77e6b36017b"
+}'
+
+4. Signin
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/user/sign-in' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"soumyakuser@gmail.com",
+    "password":"soumyakuser2001"
+}'
+
+4. Forgot password
+curl --location --request POST 'http://localhost:8000/api/user/forget-password' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"soumyakuser@gmail.com"
+}'
+
+5. Reset password
+curl --location --request POST 'http://localhost:8000/api/user/reset-password' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "token":"f4af03f26d65f00a5ae8566331723f9a76f779d1f19aa03d30de38d34a9d",
+    "userId":"639ed776d404bfb645413828",
+    "newPassword":"1234567890"
+}'
+
+6. Create Actor
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/actor/create' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--form 'avatar=@"/C:/Users/soumy/Downloads/in0C53A4.png"' \
+--form 'name="Actor101"' \
+--form 'about="Best Actorok"' \
+--form 'gender="male"'
+
+
+7. Update Actor
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/actor/update/63a84b5abbf48e6b4bbd15a0' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--form 'avatar=@"/C:/Users/soumy/Downloads/cd.png"' \
+--form 'name="test_soumyak_review"' \
+--form 'about="testupdate11"' \
+--form 'gender="male"'
+
+8.Search Actor -admin
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/search?name=Actor12' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--data-raw ''
+
+9. Search Actor User
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/searchActor?name=Actor'
+
+10. Delete Actor
+curl --location --request DELETE 'https://authentication-autherization.vercel.app/api/actor/63a8011a8231cc12d0101549' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+11.Get Latest Actor
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/latest-uploads'
+
+12. Get Actor for user
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/actorsUser'
+
+13. Get Actor for admin
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/actors' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+14. Get Single Actor
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/actor/single/63a84b5abbf48e6b4bbd15a0'
+
+15. Upload Trailer
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/movie/upload-trailer' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--form 'video=@"/C:/Users/soumy/Downloads/Ocean - 135658.mp4"'
+
+16. Add movie
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/movie/create' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--form 'cast="[{\"actor\":\"63a84b5abbf48e6b4bbd15a0\",\"roleAs\":\"SomTest\",\"leadActor\":true}]"' \
+--form 'tags="[\"testing1\",\"testing2\",\"3testing\"]"' \
+--form 'trailer="{\"url\":\"https://res.cloudinary.com/soumyak-testing/video/upload/v1671975361/rehd5fdmdbklvnffxxuk.mp4\",\"public_id\":\"rehd5fdmdbklvnffxxuk\"}"' \
+--form 'storyLine="Testing-storyline"' \
+--form 'writers="[\"djfhkjsdhkfk\",\"sjdfhkshdkhf\"]"' \
+--form 'genres="[\"Action\",\"Adventure\"]"' \
+--form 'title="Soumyak2001-test-updated"' \
+--form 'releseDate="2023-01-01"' \
+--form 'status="public"' \
+--form 'type="Movie"' \
+--form 'poster=@"/C:/Users/soumy/Downloads/ggfgf.png"' \
+--form 'language="English"'
+
+17. Update Movie
+curl --location --request PATCH 'https://authentication-autherization.vercel.app/api/movie/update/63a852433c68932075ef9c93' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--form 'cast="[{\"actor\":\"63a84b5abbf48e6b4bbd15a0\",\"roleAs\":\"SomTest\",\"leadActor\":true}]"' \
+--form 'tags="[\"testing1\",\"testing2\",\"3testing\",\"testing201\"]"' \
+--form 'trailer="{\"url\":\"https://res.cloudinary.com/soumyak-testing/video/upload/v1671975361/rehd5fdmdbklvnffxxuk.mp4\",\"public_id\":\"rehd5fdmdbklvnffxxuk\"}"' \
+--form 'storyLine="Testing-storyline-for-tst-purpose"' \
+--form 'writers="[\"djfhkjsdhkfk\",\"sjdfhkshdkhf\"]"' \
+--form 'genres="[\"Action\"]"' \
+--form 'title="Soumyak2001-test-updatedsdfsdf"' \
+--form 'releseDate="2023-01-01"' \
+--form 'status="public"' \
+--form 'type="Movie"' \
+--form 'poster=@"/C:/Users/soumy/Downloads/mail0C53A4.png"' \
+--form 'language="English"'
+
+18. Delete Movie
+curl --location --request DELETE 'https://authentication-autherization.vercel.app/api/movie/63a856ace2f13572d9305983' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+19. Get Movie admin
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/movie/movies' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+20. Get Latest Upload
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/movie/latest-uploads'
+
+21. Find Movie by ID
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/movie/single/63a8569ae2f13572d930597f'
+
+22. Get Movie for update
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/movie/for-update/63a8569ae2f13572d930597f' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+23. Add Review 
+curl --location --request POST 'https://authentication-autherization.vercel.app/api/review/add/63a8569ae2f13572d930597f' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "content":"Nice Movie",
+    "rating":9
+}'
+
+24. Update Review
+curl --location --request PATCH 'http://localhost:8000/api/review/63a761c424de26565016a9d4' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzllZDc3NmQ0MDRiZmI2NDU0MTM4MjgiLCJpYXQiOjE2NzE5MTM5MDJ9.Hpxmj-5HLlidt2qCWPxGsCY01sLQwzB_twGKH1K964o' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "content":"Nice Movie1",
+    "rating":7
+}'
+
+25. Review Delete
+curl --location --request DELETE 'https://authentication-autherization.vercel.app/api/review/63a85999e2f13572d93059a3' \
+--header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2E3ZmM1YjkxOGMxNzcwZjU3MGUyMWEiLCJpYXQiOjE2NzE5NTQxMjd9.6eZKnpfoTLIHHrV6sXdVFNmszwCGXQI5TlClpdpReqU'
+
+26. Get Review By ID
+curl --location --request GET 'https://authentication-autherization.vercel.app/api/review/get-reviews-by-movie/63a8569ae2f13572d930597f'
