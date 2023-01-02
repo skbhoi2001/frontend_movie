@@ -4,7 +4,7 @@ let baseUserUrl = `http://localhost:8000/api`;
 let token = `Generate token`;
 
 export async function api_createUser({ name, email, password }) {
-  let url = `${baseUserUrl}/create`;
+  let url = `${baseUserUrl}/user/create`;
   let headers = {
     'Content-Type': 'application/json',
   };
@@ -12,6 +12,7 @@ export async function api_createUser({ name, email, password }) {
     name: name,
     email: email,
     password: password,
+    role: 'user',
   };
   return postApi(url, body, headers);
 }

@@ -1,9 +1,10 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 const HomeComponent = () => {
   return (
     <div>
-      <a href='/auth/signup'>Signup</a>
+      <Navbar />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import UserOtpVerify from '../../components/Component/UserOtpVerify';
+import UserOtpVerify from '../../components/Component/Auth/UserOtpVerify';
 
 const otpVerify = () => {
   return (
