@@ -2,6 +2,7 @@ import React from 'react';
 import Styles from '../../styles/Navbar.module.css';
 import { useCookies } from 'react-cookie';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Navbar = () => {
   const [cookieData, setCookieData, removeCookie] = useCookies();
@@ -16,8 +17,8 @@ const Navbar = () => {
     router.push('/');
   };
   return (
-    <div>
-      <div>Movie Database</div>
+    <div className={Styles.navContainer}>
+      {/* <div>Movie Database</div>
       <div>
         {cookieData?.usertoken && cookieData?.userstatus ? (
           <div>
@@ -27,6 +28,22 @@ const Navbar = () => {
         ) : (
           <a href='/auth/signup'>Signup</a>
         )}
+      </div> */}
+      <div>REVIEW_ME</div>
+      <div>
+        <input className={Styles.searchInput} type="text" />
+        <button className={Styles.buttonSearch}>Search</button>
+      </div>
+      <div className={Styles.NavDataContainer}>
+        <div>Movies</div>
+        <div>Actor</div>
+        {
+          cookieData?.usertoken && cookieData?.userstatus ?(
+            <div>Account</div>
+          ):(
+            <Link href='/auth/signup'>Account</Link>
+          )
+        }
       </div>
     </div>
   );
