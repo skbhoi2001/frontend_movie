@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { api_createUser } from '../../common/apiOperation';
 import { setSessionStorageData } from '../../common/sessionStorageData';
+import Styles from '../../../styles/auth.module.css';
+import AuthCommon from './AuthCommon';
 
 const UserSignup = () => {
   const [name, setName] = useState('');

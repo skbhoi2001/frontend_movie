@@ -1,10 +1,10 @@
 import React from 'react';
-import UserSignin from '../../components/Component/Auth/UserSignin';
+import UserAuth from '../../components/Component/Auth/UserAuth';
 
 const signin = () => {
   return (
     <div>
-      <UserSignin />
+      <UserAuth />
     </div>
   );
 };

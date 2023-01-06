@@ -31,19 +31,17 @@ const Navbar = () => {
       </div> */}
       <div>REVIEW_ME</div>
       <div>
-        <input className={Styles.searchInput} type="text" />
+        <input className={Styles.searchInput} type='text' />
         <button className={Styles.buttonSearch}>Search</button>
       </div>
       <div className={Styles.NavDataContainer}>
         <div>Movies</div>
         <div>Actor</div>
-        {
-          cookieData?.usertoken && cookieData?.userstatus ?(
-            <div>Account</div>
-          ):(
-            <Link href='/auth/signup'>Account</Link>
-          )
-        }
+        {cookieData?.usertoken && cookieData?.userstatus ? (
+          <div onClick={() => handleLogout()}>Logout</div>
+        ) : (
+          <Link href='/auth'>Account</Link>
+        )}
       </div>
     </div>
   );
