@@ -73,6 +73,7 @@ export async function api_resetPassword({ token, userId, newPassword }) {
     userId: userId,
     newPassword: newPassword,
   };
+  return postApi(url, body, headers);
 }
 
 export async function api_createActor({ formData }) {

@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie';
 import {
   api_createUser,
   api_forgotPassword,
+  api_resendEmailVerifification,
   api_signIn,
   api_verifyUser,
 } from '../../common/apiOperation';
@@ -53,7 +54,6 @@ const UserAuth = () => {
       userId: userId,
       OTP: otp,
     });
-    console.log('otpVerify', otpVerify);
     if (otpVerify?.data?.statusId == 1) {
       setCookieData('userid', otpVerify?.data?.user?.id);
       setCookieData('usertoken', otpVerify?.data?.user?.token);
@@ -67,7 +67,6 @@ const UserAuth = () => {
 
   const handleLogin = async () => {
     const signin = await api_signIn({ email, password });
-    console.log('signin', signin);
     if (signin?.data?.statusId == 1) {
       setCookieData('userid', signin?.data?.user?.id);
       setCookieData('usertoken', signin?.data?.user?.token);
@@ -80,7 +79,6 @@ const UserAuth = () => {
   };
   const handleSignup = async () => {
     const signup = await api_createUser({ name, email, password });
-    console.log('signup', signup);
     if (signup?.data?.statusId == 1) {
       setSessionStorageData('signupData', signup?.data?.user?.id);
       handleOtpUi();
@@ -89,10 +87,17 @@ const UserAuth = () => {
 
   const handleSendForgotLink = async () => {
     const handle = await api_forgotPassword({ email });
-    console.log('handle', handle);
     if (handle?.data?.statusId == 1) {
       alert(handle?.data?.message);
       router.push('/');
+    }
+  };
+  const handleResend = async () => {
+    const resend = await api_resendEmailVerifification({ userId });
+    if (resend?.data?.statusId == 1) {
+      alert(resend?.data?.message);
+    } else {
+      alert(resend?.message);
     }
   };
 
@@ -206,6 +211,13 @@ const UserAuth = () => {
           >
             Submit
           </button>
+          <div
+            className='fontType3'
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleResend()}
+          >
+            Resend Verification Token
+          </div>
         </div>
       )}
       {forgotModal && (
