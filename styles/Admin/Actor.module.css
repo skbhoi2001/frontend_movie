@@ -1,0 +1,27 @@
+.addActor {
+  display: flex;
+  justify-content: space-between;
+  padding: 2% 5%;
+  background-color: rgb(215, 215, 215);
+}
+.moduleContainer {
+  padding: 10px;
+  width: 50%;
+  outline: 0px;
+  background-color: white;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.radioContainer {
+  padding: 2% 20%;
+  display: flex;
+  justify-content: space-between;
+}
+.radioArea {
+  display: flex;
+  align-items: center;
+}

@@ -59,9 +59,13 @@ const UserAuth = () => {
       setCookieData('usertoken', otpVerify?.data?.user?.token);
       setCookieData('username', otpVerify?.data?.user?.name);
       setCookieData('useremail', otpVerify?.data?.user?.email);
-      setCookieData('userrole', otpVerify?.data?.user?.role);
       setCookieData('userstatus', otpVerify?.data?.user?.isVerified);
-      router.push('/');
+      if (otpVerify?.data?.user?.role == 'user') {
+        router.push('/');
+      }
+      if (otpVerify?.data?.user?.role == 'admin') {
+        router.push('/admin');
+      }
     }
   };
 
@@ -72,9 +76,13 @@ const UserAuth = () => {
       setCookieData('usertoken', signin?.data?.user?.token);
       setCookieData('username', signin?.data?.user?.name);
       setCookieData('useremail', signin?.data?.user?.email);
-      setCookieData('userrole', signin?.data?.user?.role);
       setCookieData('userstatus', signin?.data?.user?.isVerified);
-      router.push('/');
+      if (signin?.data?.user?.role == 'user') {
+        router.push('/');
+      }
+      if (signin?.data?.user?.role == 'admin') {
+        router.push('/admin');
+      }
     }
   };
   const handleSignup = async () => {
