@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-const HomeComponent = () => {
+const HomeComponent = ({ setDiffTheme }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar setDiffTheme={setDiffTheme} />
     </div>
   );
 };
