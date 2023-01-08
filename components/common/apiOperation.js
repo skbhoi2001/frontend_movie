@@ -1,7 +1,7 @@
 import { deleteApi, getApi, postApi } from './apiPromise';
 
 let baseUserUrl = `http://localhost:8000/api`;
-let token = `Generate token`;
+// let token = `Generate token`;
 
 export async function api_createUser({ name, email, password }) {
   let url = `${baseUserUrl}/user/create`;
@@ -76,10 +76,12 @@ export async function api_resetPassword({ token, userId, newPassword }) {
   return postApi(url, body, headers);
 }
 
-export async function api_createActor({ formData }) {
+export async function api_createActor({ formData, cookieData }) {
+  console.log('data1', cookieData?.usertoken);
   let url = `${baseUserUrl}/actor/create`;
   let headers = {
-    authorization: 'Bearer ' + token,
+    authorization: `Bearer ${cookieData?.usertoken}`,
+    // authorization: 'Bearer ' + cookieData?.usertoken,
     'content-type': 'multipart/form-data',
   };
   let form = formData;
