@@ -88,10 +88,10 @@ export async function api_createActor({ formData, cookieData }) {
   return postApi(url, form, headers);
 }
 
-export async function api_updateActor({ formData, id }) {
+export async function api_updateActor({ formData, id, cookieData }) {
   let url = `${baseUserUrl}/actor/update/${id}`;
   let headers = {
-    authorization: 'Bearer ' + token,
+    authorization: `Bearer ${cookieData?.usertoken}`,
     'content-type': 'multipart/form-data',
   };
   let form = formData;
@@ -112,10 +112,10 @@ export async function api_searchActor({ name }) {
   return getApi(url, headers);
 }
 
-export async function api_deleteActor({ id }) {
+export async function api_deleteActor({ id, cookieData }) {
   let url = `${baseUserUrl}/actor/${id}`;
   let headers = {
-    authorization: 'Bearer ' + token,
+    authorization: `Bearer ${cookieData?.usertoken}`,
   };
   return deleteApi(url, '', headers);
 }
