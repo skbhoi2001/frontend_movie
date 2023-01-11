@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://authentication-autherization.vercel.app/api",
 });
 
 export default client;
